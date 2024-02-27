@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use App\Models\Technology;
-use App\Models\Project_technology;
+use App\Models\ProjectTechnology;
 
 class TechnologyTableSeeder extends Seeder
 {
@@ -22,10 +22,9 @@ class TechnologyTableSeeder extends Seeder
             -> create()
             -> each(function($technology){
 
-                $project_technology = Project_technology:: inRandomOrder() -> limit(3) -> get();
-                $technology -> posts() -> attach($project_technology);
+                $projectTechnology = ProjectTechnology:: inRandomOrder() -> limit(3) -> get();
+                $technology -> projectTechnologies() -> attach($projectTechnology);
                 $technology -> save();
             });
-
     }
 }
