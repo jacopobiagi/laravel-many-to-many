@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\ProjectTechnology;
+use App\Models\Project;
 
 class Technology extends Model
 {
     use HasFactory;
 
-    public function projectTechnologies(){
-        return $this -> belongsToMany(ProjectTechnology::class);
+    public function projects(){
+        return $this -> belongsToMany(Project::class);
     }
 }

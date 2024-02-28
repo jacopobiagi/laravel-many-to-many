@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('technology_project_technology', function (Blueprint $table) {
+        Schema::table('project_technology', function (Blueprint $table) {
             $table -> foreignId('technology_id') -> constrained();
-            $table -> foreignId('project_technology_id') -> constrained();
+            $table -> foreignId('project_id') -> constrained();
         });
     }
 
@@ -26,13 +26,13 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('technology_project_technology', function (Blueprint $table) {
+        Schema::table('project_technology', function (Blueprint $table) {
 
-            $table -> dropForeign('technology_project_technology_technology_id_foreign') -> constrained();
+            $table -> dropForeign('project_technology_technology_id_foreign') -> constrained();
             $table -> dropColumn('technology_id');
 
-            $table -> dropForeign('technology_project_technology_project_technology_id_foreign') -> constrained();
-            $table -> dropColumn('project_technology_id');
+            $table -> dropForeign('project_technology_project_id_foreign') -> constrained();
+            $table -> dropColumn('project_id');
         });
     }
 };

@@ -4,11 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\ProjectTechnology;
+use App\Models\Project;
 use App\Models\Technology;
 
 
-class ProjectTechnologyTableSeeder extends Seeder
+class ProjectTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class ProjectTechnologyTableSeeder extends Seeder
      */
     public function run()
     {
-        ProjectTechnology:: factory()
+        Project:: factory()
             -> count(100)
             -> create();
 
