@@ -3,5 +3,11 @@
     <title>Home</title>
 @endsection
 @section('content')
-    <h1>Hello, World!</h1>
+    <h1>PROGETTI</h1>
+
+    <ul>
+        @foreach ($projects as $project)
+            <li>{{$project -> name}}</li>
+        @endforeach
+    </ul>
 @endsection
