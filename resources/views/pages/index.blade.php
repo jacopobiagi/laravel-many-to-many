@@ -8,6 +8,7 @@
     <ul>
         @foreach ($projects as $project)
             <li>{{$project -> name}}</li>
+            <a href="{{ route('project.edit', $project -> id) }}" class='mx-2'>EDIT</a>
         @endforeach
     </ul>
 @endsection

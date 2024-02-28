@@ -68,7 +68,9 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+
+        return view('pages.update', compact('project'));
     }
 
     /**
@@ -80,7 +82,19 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $project = Project::find($id);
+        //$data = $request -> all();
+        $data = $request -> validate([
+            'name' => 'required|string|min:3|max:60',
+            'desc' => 'required|min:50|max:255',
+        ]);
+
+        $project -> name = $data['name'];
+        $project -> description = $data['desc'];
+
+        $project -> save();
+
+        return redirect() -> route('project.index', $project -> id);
     }
 
     /**
