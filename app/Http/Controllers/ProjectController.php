@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Project;
+
 
 class ProjectController extends Controller
 {
@@ -40,10 +42,15 @@ class ProjectController extends Controller
     {
         $data = $request -> all();
 
+        $img = $data['image'];
+        $img_path = Storage :: disk('public') -> put('images', $img);
+
         $newProject = new Project();
         
         $newProject -> name = $data['name'];
         $newProject -> description = $data['desc'];
+        $newProject -> image = $img_path;
+
         $newProject -> save();
 
         return redirect() -> route('project.index', $newProject -> id);

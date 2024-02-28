@@ -8,6 +8,7 @@
     <ul>
         @foreach ($projects as $project)
             <li>{{$project -> name}}</li>
+            <img src="{{asset('storage/' . $project -> image)}}" alt="" style="width:200px">
             <a href="{{ route('project.edit', $project -> id) }}" class='mx-2'>EDIT</a>
         @endforeach
     </ul>
